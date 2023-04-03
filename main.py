@@ -1,7 +1,5 @@
 import math
 
-
-
 with open("data.txt", "r") as data:
     
     filelines = data.readlines()
