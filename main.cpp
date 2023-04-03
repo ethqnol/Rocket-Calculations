@@ -25,6 +25,8 @@ int main() {
         text = text.erase(text.find_last_not_of(" \n\r\t")+1);
 
         int splitPoint = text.find(" ");
+
+        //pushing individual items into their corresponding vectors
         timestamp.push_back(text.substr(0, splitPoint));
         value.push_back(text.substr(splitPoint + 1, text.length()-2));
 

@@ -1,15 +1,54 @@
 import math
+import time
 
-with open("data.txt", "r") as data:
+
+iterable = 0
+flag = False  
+
+def getData():
+    with open("data.txt", "r") as data:
+        
+        filelines = data.readlines()
+        timestamp = []
+        value = []
+
+        for l in filelines:
+            datapoint = l.split(" ")
+            timestamp.append(datapoint[0])
+            value.append(datapoint[1].replace("\n", ""))
     
-    filelines = data.readlines()
-    timestamp = []
-    value = []
+    ListOfStuff = [timestamp, value]
+        
+    return ListOfStuff
 
-    for l in filelines:
-        datapoint = l.split(" ")
-        timestamp.append(datapoint[0])
-        value.append(datapoint[1].replace("\n", ""))
+def calculateVelocity(current, initial, timedelta):
+    velocity = current - initial + 9.8 * timedelta * timedelta
+    return velocity
 
-    print(timestamp)
-    print(value)
+
+
+
+def main():
+    gate = True
+    startVelCalc = False
+    while True:
+        data = getData()
+        timestamp = data[0]
+        value = data[1]
+        latestData = value[len(value) - 1]
+        recentData = value[len(value) - 6]
+        
+        print(timestamp)
+        if gate and latestData < recentData:
+            gate = False
+            startVelCalc = True
+
+        if startVelCalc == True:
+            deltaTime = timestamp[len(value) - 1] - value[len(value) - 6]
+            calculateVelocity(latestData, recentData, deltaTime)
+
+        
+main()
+
+
+    
