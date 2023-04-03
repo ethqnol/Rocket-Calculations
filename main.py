@@ -35,16 +35,15 @@ def main():
         data = getData()
         timestamp = data[0]
         value = data[1]
-        latestData = value[len(value) - 1]
-        recentData = value[len(value) - 6]
+        latestData = int(value[len(value) - 1])
+        recentData = int(value[len(value) - 6])
         
-        print(timestamp)
         if gate and latestData < recentData:
             gate = False
             startVelCalc = True
 
         if startVelCalc == True:
-            deltaTime = timestamp[len(value) - 1] - value[len(value) - 6]
+            deltaTime = int(timestamp[len(value) - 1]) - int(value[len(value) - 6])
             calculateVelocity(latestData, recentData, deltaTime)
 
         
