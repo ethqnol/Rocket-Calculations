@@ -72,17 +72,17 @@ int main() {
 
         if (atPeak) {
             // get the last 10 altitude readings
-            std::vector<int> last_altitudes(sizeAlt - 11, sizeAlt - 1);
+            std::vector<int> lastAltitudes(sizeAlt - 11, sizeAlt - 1);
             
             // calculate the average altitude change over the last 10 readings
             double changeInAlt = 0.0;
-            for (int i = 1; i < last_altitudes.size(); i++) {
-                changeInAlt += last_altitudes[i-1] - last_altitudes[i];
+            for (int i = 1; i < lastAltitudes.size(); i++) {
+                changeInAlt += lastAltitudes[i-1] - lastAltitudes[i];
             }
-            double average_altitude_change = changeInAlt / 9.0;
+            double avAltChange = changeInAlt / 9.0;
 
             // calculate the free fall velocity based on the average altitude change
-            ffVelo = sqrt(2.0 * 9.81 * abs(average_altitude_change));
+            ffVelo = sqrt(2.0 * 9.81 * abs(avAltChange));
             std::cout << "Apogee Detected | Free Fall Velocity: " << ffVelo << " m/s" << std::endl;
         }
 
