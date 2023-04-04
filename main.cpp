@@ -64,7 +64,7 @@ int main() {
         std::cout << " " << std::endl;
         printVector(altitudes);
         std::cout << " " << std::endl;
-        if (sizeAlt > 1 && altitudes[sizeAlt - 1] < altitudes[sizeAlt - 2] && altitudes[sizeAlt] < altitudes[sizeAlt - 6]) {
+        if (atPeak == false && sizeAlt > 1 && altitudes[sizeAlt - 1] < altitudes[sizeAlt - 2] && altitudes[sizeAlt] < altitudes[sizeAlt - 6]) {
             atPeak = true; // apogee passed
         }
 
